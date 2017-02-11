@@ -2,12 +2,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class BruteMarkov implements MarkovInterface<String> {
+	private static final int DEFAULT_ORDER = 3;
 	private String myText;
 	private Random myRandom;
 	private int myOrder;
 	
 	private static String PSEUDO_EOS = "";
-	private static long RANDOM_SEED = 1234;
+	private static long RANDOM_SEED = 5678;
 	
 	public BruteMarkov(int order) {
 		myRandom = new Random(RANDOM_SEED);
@@ -15,7 +16,7 @@ public class BruteMarkov implements MarkovInterface<String> {
 	}
 	
 	public BruteMarkov() {
-		this(3);
+		this(DEFAULT_ORDER);
 	}
 	
 	public void setTraining(String text) {
@@ -49,8 +50,10 @@ public class BruteMarkov implements MarkovInterface<String> {
 		}
 		return sb.toString();
 	}
-	
-	public ArrayList<String> getFollows(String key){
+	// this is what makes this Brutish 
+	// create a getFollows that fills map once. Only go through once! 
+	// don't search through the entire text each time. Just look up in your map 
+	public ArrayList<String> getFollows(String key){ 
 		ArrayList<String> follows = new ArrayList<String>();
 		
 		int pos = 0;  // location where search for key in text starts

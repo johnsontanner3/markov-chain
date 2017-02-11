@@ -1,4 +1,6 @@
 import java.io.File;
+// need to create a WordGram class
+
 
 public class WordMarkovDriver {
 	public static void main(String[] args) {
