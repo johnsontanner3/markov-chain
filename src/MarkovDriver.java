@@ -4,7 +4,7 @@ import java.util.*;
 
 public class MarkovDriver {
 	public static void main(String[] args) {
-		String filename = "data/alice.txt";
+		String filename = "data/trump-convention.txt";
 		if (args.length > 0) {
 			filename = args[1];
 		}
@@ -13,7 +13,7 @@ public class MarkovDriver {
 	
 		double start = System.nanoTime();
 		for(int k=1; k <= 5; k++) {
-			MarkovInterface<String> markov = new BruteMarkov(k);
+			MarkovInterface<String> markov = new BruteMarkov(k); // change BruteMarkov to EfficientMarkov to test, need constructor 
 			markov.setTraining(text);
 			String random = markov.getRandomText(200);
 			System.out.printf("%d markov model with %d chars\n", k,random.length());

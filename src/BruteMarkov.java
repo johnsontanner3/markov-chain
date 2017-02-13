@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.*;
 import java.util.Random;
 
 public class BruteMarkov implements MarkovInterface<String> {
@@ -21,7 +22,9 @@ public class BruteMarkov implements MarkovInterface<String> {
 	
 	public void setTraining(String text) {
 		myText = text;
+		
 	}
+	
 	public int size() {
 		return myText.length();
 	}
@@ -34,13 +37,13 @@ public class BruteMarkov implements MarkovInterface<String> {
 		//System.out.printf("first random %d for '%s'\n",index,current);
 		sb.append(current);
 		for(int k=0; k < length-myOrder; k++){
-			ArrayList<String> follows = getFollows(current);
+			ArrayList<String> follows = getFollows(current); // getFollows is slow AF 
 			if (follows.size() == 0){
 				break;
 			}
-			index = myRandom.nextInt(follows.size());
+			index = myRandom.nextInt(follows.size()); // grab random item in your Array 
 			
-			String nextItem = follows.get(index);
+			String nextItem = follows.get(index); // build with random char 
 			if (nextItem.equals(PSEUDO_EOS)) {
 				//System.out.println("PSEUDO");
 				break;
@@ -48,7 +51,9 @@ public class BruteMarkov implements MarkovInterface<String> {
 			sb.append(nextItem);
 			current = current.substring(1)+ nextItem;
 		}
+		
 		return sb.toString();
+		
 	}
 	// this is what makes this Brutish 
 	// create a getFollows that fills map once. Only go through once! 
@@ -59,7 +64,7 @@ public class BruteMarkov implements MarkovInterface<String> {
 		int pos = 0;  // location where search for key in text starts
 		
 		while (pos < myText.length()){
-			int start = myText.indexOf(key,pos);
+			int start = myText.indexOf(key,pos); // scans whole thing for each occurrence of ONE key. Takes forevs
 			if (start == -1){
 				//System.out.println("didn't find "+key);
 				break;
