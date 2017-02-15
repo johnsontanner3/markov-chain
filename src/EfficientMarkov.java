@@ -9,7 +9,7 @@ public class EfficientMarkov implements MarkovInterface<String> {
 	private String myText;
 	private Random myRandom;
 	private int myOrder;
-	public TreeMap<String,ArrayList<String>> myMap;
+	public HashMap<String,ArrayList<String>> myMap;
 	
 	private static String PSEUDO_EOS = "";
 	private static long RANDOM_SEED = 1234;
@@ -29,7 +29,7 @@ public class EfficientMarkov implements MarkovInterface<String> {
 	public void setTraining(String text) {
 		// Generate map!!! How long are our grams? this.myOrder
 		myText = text;
-		TreeMap<String, ArrayList<String>> map = new TreeMap<String, ArrayList<String>>();
+		HashMap<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
 		int pos = 0;
 		while (pos < myText.length()) {
 			String key = text.substring(pos, pos + myOrder);
@@ -41,14 +41,10 @@ public class EfficientMarkov implements MarkovInterface<String> {
 				map.put(key, empty); // initialize empty ArrayList. 
 			}
 			if (pos + myOrder + 1 >= myText.length()) {
-				//map.put(key, map.get(key).add(PSEUDO_EOS)); // apparently you can't do this. 
 				map.get(key).add(PSEUDO_EOS);
 				break;
 			}
 			String nextChar = text.substring(pos + myOrder, pos + myOrder + 1); 
-//			ArrayList<String> plus = new ArrayList<String>();
-//			plus.add(nextChar);
-			// map.put(key, map.get(key).addAll(plus)); // how do you do this?
 			map.get(key).add(nextChar);
 			pos += 1;
 		}
@@ -94,9 +90,11 @@ public class EfficientMarkov implements MarkovInterface<String> {
 		// the only thing we really need to change in this Class. Inherit everything else pretty much.
 		// use this to access the map we build in setTraining(). pretty simple stuff 
 		// setTraining(myText);
-		ArrayList<String> all = myMap.get(key); // new ArrayList<String>();
+		// ArrayList<String> all = myMap.get(key); // new ArrayList<String>();
+		
 		// all.addAll(myMap.get(key));
-		return all;
+		// return all;
+		return myMap.get(key);
 	}
 
 	@Override
