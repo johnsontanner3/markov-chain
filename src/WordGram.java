@@ -26,11 +26,14 @@ public class WordGram implements Comparable<WordGram> {
 		WordGram a2 = new WordGram(someWords, 0, 3);
 		WordGram a = new WordGram(someWords,0,4);
 		WordGram aShift = a.shiftAdd("new");
-		System.out.println("a2 "+Arrays.asList(a2));
-		System.out.println("a "+Arrays.asList(a));
+		System.out.println("a2: "+Arrays.asList(a2));
+		System.out.println("a: "+Arrays.asList(a));
 
-		int i = a2.compareTo(a);
-		System.out.format("The value of a2 comparedTo a is: %d", i);
+		int i = a.compareTo(a2);
+		int j = b2.compareTo(b2);
+		System.out.format("The value of a comparedTo a2 is: %d", i);
+		System.out.format("\nThe value of b2 comparedTo b2 is: %d", j);
+
 //		System.out.print("a2 compared to a: " );
 //		System.out.println(int a2.compareTo(a));
 //		System.out.println(Arrays.asList(a.myWords));
@@ -109,13 +112,15 @@ public class WordGram implements Comparable<WordGram> {
 		if (myWords.length < o.myWords.length) {
 			return -1;
 		}
-		// int max = Math.max(myWords.length, o.myWords.length);
-		for (int i=0; i < myWords.length; i++) {
-			if (myWords[i].toString().compareTo(o.myWords[i].toString()) == 0) {
-				continue;
-			} else return myWords[i].toString().compareTo(o.myWords[i].toString());
-		
+		if (myWords.length > o.myWords.length) {
+			return 1;
 		}
+//		for (int i=0; i < myWords.length; i++) {
+//			if (myWords[i].toString().compareTo(o.myWords[i].toString()) == 0) {
+//				continue;
+//			} else return myWords[i].toString().compareTo(o.myWords[i].toString());
+//		
+//		}
 		if (myWords.length == o.myWords.length) {
 			return 0;
 		}
