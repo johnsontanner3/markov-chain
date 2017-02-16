@@ -20,25 +20,25 @@ public class WordGram implements Comparable<WordGram> {
 		}
 	}
 	
-	public static void main(String[] args) {
-		String [] someWords = {"apple", "zebra", "mongoose", "hat"};
-		WordGram b2 = new WordGram(someWords, 2, 0);
-		WordGram a2 = new WordGram(someWords, 0, 3);
-		WordGram a = new WordGram(someWords,0,4);
-		WordGram aShift = a.shiftAdd("new");
-		System.out.println("a2: "+Arrays.asList(a2));
-		System.out.println("a: "+Arrays.asList(a));
-
-		int i = a.compareTo(a2);
-		int j = b2.compareTo(b2);
-		System.out.format("The value of a comparedTo a2 is: %d", i);
-		System.out.format("\nThe value of b2 comparedTo b2 is: %d", j);
+//	public static void main(String[] args) {
+//		String [] someWords = {"apple", "zebra", "mongoose", "hat"};
+//		WordGram b2 = new WordGram(someWords, 2, 0);
+//		WordGram a2 = new WordGram(someWords, 0, 3);
+//		WordGram a = new WordGram(someWords,0,4);
+//		WordGram aShift = a.shiftAdd("new");
+//		System.out.println("a2: "+Arrays.asList(a2));
+//		System.out.println("a: "+Arrays.asList(a));
+//
+//		int i = a.compareTo(a2);
+//		int j = b2.compareTo(b2);
+//		System.out.format("The value of a comparedTo a2 is: %d", i);
+//		System.out.format("\nThe value of b2 comparedTo b2 is: %d", j);
 
 //		System.out.print("a2 compared to a: " );
 //		System.out.println(int a2.compareTo(a));
 //		System.out.println(Arrays.asList(a.myWords));
 //		System.out.println(Arrays.asList(aShift.myWords));
-	}
+//	}
 	
 	/*
 	 * Use index of each word in myWords to make unique codes 
