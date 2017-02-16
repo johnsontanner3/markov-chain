@@ -6,7 +6,7 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 	private String[] myText;
 	private Random myRandom;
 	private int myOrder;
-	public TreeMap<WordGram,ArrayList<String>> myMap;
+	public HashMap<WordGram,ArrayList<String>> myMap;
 	private static String PSEUDO_EOS = "";
 	private static long RANDOM_SEED = 1234;
 	
@@ -24,7 +24,7 @@ public class EfficientWordMarkov implements MarkovInterface<WordGram> {
 		// declare myText as a list split on whitespace here. 
 		String[] textSplit = text.split("\\s+");
 		myText = textSplit;
-		TreeMap<WordGram,ArrayList<String>> map = new TreeMap<WordGram, ArrayList<String>>();
+		HashMap<WordGram,ArrayList<String>> map = new HashMap<WordGram, ArrayList<String>>();
 		int pos = 0;
 		while (pos < myText.length) {
 			WordGram key = new WordGram(myText, pos, myOrder);
