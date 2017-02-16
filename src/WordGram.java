@@ -43,7 +43,7 @@ public class WordGram implements Comparable<WordGram> {
 	public int hashCode() {
 		int hash = 0;
 		for (int k=0; k < myWords.length; k++){
-			hash = 100*hash + myWords[k].hashCode(); // multiply by index to give unique codes 
+			hash = hash*7 + myWords[k].hashCode();
 		}
 		myHash = hash;
 		return hash;
@@ -106,55 +106,41 @@ public class WordGram implements Comparable<WordGram> {
 		if (o.myWords.length == 0 && myWords.length > 0) {
 			return 1;
 		}
-		if (o.myWords.length != myWords.length) {
-			int themin = Math.min(o.myWords.length, myWords.length);
-			for (int k=0; k < themin; k++) {
-				if (myWords[k].equals(o.myWords[k])) {
-					continue;
-				} return myWords[k].compareTo(o.myWords[k]);
-			}
+		if (myWords.length < o.myWords.length) {
+			return -1;
 		}
+		// int max = Math.max(myWords.length, o.myWords.length);
+		for (int i=0; i < myWords.length; i++) {
+			if (myWords[i].toString().compareTo(o.myWords[i].toString()) == 0) {
+				continue;
+			} else return myWords[i].toString().compareTo(o.myWords[i].toString());
 		
-		if (o.myWords.length == (myWords.length)) {
-			for (int i= 0; i < o.myWords.length; i++) {
-				if (myWords[i].equals(o.myWords[i])) {
-					continue;
-				} else {
-					return myWords[i].compareTo(o.myWords[i]);
-				}
 		}
-		
-//		for (int i= 0; i < o.myWords.length; i++) {
-//			if (myWords[i].equals(o.myWords[i])) {
-//				continue;
-//			} else {
-//				return myWords[i].compareTo(o.myWords[i]);
-//			}
+		if (myWords.length == o.myWords.length) {
+			return 0;
 		}
-		return 0;
-		// TODO Auto-generated method stub
-//		if (Arrays.toString(o.myWords).equals("") && !Arrays.toString(myWords).equals("")) {
+		return -1;
+//		if (o.myWords.length > myWords.length) {
 //			return -1;
+////			int themin = Math.min(o.myWords.length, myWords.length);
+////			for (int k=0; k < themin; k++) {
+////				if (myWords[k].equals(o.myWords[k])) {
+////					continue;
+////				} return myWords[k].compareTo(o.myWords[k]);
+////			}
 //		}
-//		System.out.println(Arrays.toString(this.myWords));
-//		System.out.println(Arrays.toString(o.myWords));
-		//String current = Arrays.toString(this.myWords);
-		// String currentSlice = current.substring(0, -1);
-		// String oth = Arrays.toString(o.myWords);
-//		String currentSquish = current.replace(",", "");
-////		String currentSquish2 = currentSquish.substring(1, -1);
-//
-//
-//		String othSquish = oth.replace(",", "");
-
-//		System.out.println("this is current: " + currentSquish2);
 //		
-//		System.out.println("this is oth: " + othSquish);
+//		if (o.myWords.length == (myWords.length)) {
+//			for (int i= 0; i < o.myWords.length; i++) {
+//				if (myWords[i].equals(o.myWords[i])) {
+//					continue;
+//				} else {
+//					return myWords[i].compareTo(o.myWords[i]);
+//				}
+//		}
+//		}
+//		return 0;
 
-		// String othSlice = oth.substring(0, -1);
-		//return oth.compareTo(current);
-		// return Arrays.toString(this.myWords).substring(1, -1).compareTo(Arrays.toString(o.myWords).substring(1, -1));
-		// return this.compareTo(o); can't do this because you have like hash variables and stuff 
 	}
 
 }

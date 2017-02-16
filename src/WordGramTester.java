@@ -96,7 +96,7 @@ public class WordGramTester {
 		assertEquals("comp fail copy",a.compareTo(b) == 0, true);
 		assertEquals("fail sub", a2.compareTo(a) < 0, true);
 		assertEquals("fail super",a.compareTo(a2) > 0, true);
-//		assertEquals("fail empty",b2.compareTo(a2) < 0, true);
+		assertEquals("fail empty",b2.compareTo(a2) < 0, true);
 	}
 
 }

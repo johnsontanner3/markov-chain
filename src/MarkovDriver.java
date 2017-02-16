@@ -15,7 +15,7 @@ public class MarkovDriver {
 		for(int k=5; k <= 5; k++) {
 			MarkovInterface<String> markov = new EfficientMarkov(k); // change BruteMarkov to EfficientMarkov to test, need constructor 
 			markov.setTraining(text);
-			String random = markov.getRandomText(1000000);
+			String random = markov.getRandomText(200);
 			System.out.printf("%d markov model with %d chars\n", k,random.length());
 			printNicely(random,60);
 		}
